@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "nsfwjs",
+    "builds": [
+      { "src": "example/node_demo/server.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/example/node_demo/server.js" }
+    ]
+   }

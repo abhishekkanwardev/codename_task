@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @media (min-width: 768px) {
+        .navbar {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: baseline;
+          align-content: flex-start;
+        }
+        .navbar__links i {
+          margin: 0px;
+          color: #c8882d;
+          font-size: 25px;
+        }
+        a {
+          text-decoration: none;
+          display: block;
+          padding: 1em;
+          color: #c8882d;
+          font-size: 25px;
+          font-family: Lora;
+        }
+      }
+
+      /*Animation of the title*/
+
+      @keyframes titleIn {
+        0% {
+          opacity: 0;
+          transform: translateX(-10px);
+        }
+        70% {
+          transform: translateX(150px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      html,
+      body {
+        background-color: #eceee5;
+      }
+
+      /* Navbar*/
+      .navbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-content: flex-start;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      a {
+        text-decoration: none;
+        display: block;
+        padding: 1em;
+        color: #c8882d;
+        font-size: 18px;
+        font-family: Lora;
+      }
+
+      a:hover {
+        border-bottom: 1px #20263f solid;
+      }
+
+      .navbar__social-media {
+        display: flex;
+        justify-content: space-between;
+      }
+      .navbar__links i {
+        margin: 0px;
+        color: #c8882d;
+        font-size: 18px;
+      }
+      .navbar__links i:hover {
+        border-bottom: 1px #20263f solid;
+      }
+
+      .navigation li:hover {
+        background-color: #20263f;
+      }
+
+      /* Title Format */
+      h1 {
+        color: #20263f;
+        font-family: "Dosis", sans-serif;
+        font-weight: 400;
+        font-size: 50px;
+        display: block;
+      }
+      .title {
+        text-align: left;
+        justify-content: left;
+        width: 100%;
+        height: 75px;
+        margin-bottom: 30px;
+        animation-name: titleIn;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+      }
+
+      .container {
+        display: grid;
+        grid-gap: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-auto-rows: 300px;
+      }
+
+      .container > div > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .description {
+        display: none;
+        position: absolute;
+        font-size: 15px;
+      }
+
+      img {
+        border-radius: 10px;
+        padding: 5px;
+      }
+
+      .container > div:hover {
+        transform: scale(1.1);
+      }
+      .container > div:hover .description {
+        display: block;
+        text-align: center;
+      }
+
+      .container > div:hover img {
+        opacity: 0.7;
+      }
+      .container > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+        color: #20263f;
+      }
+
+      div {
+        margin-bottom: 25px;
+      }
+
+      p {
+        padding-bottom: 15px;
+        font-size: 18px;
+      }
+
+      .standard-btn {
+        text-decoration: none;
+        border: 2px solid #00acec;
+        padding: 10px 20px 10px 20px;
+        border-radius: 2px;
+        color: #00acec;
+        margin: 5px;
+      }
+      .standard-btn-coloured {
+        text-decoration: none;
+        background: #00acec;
+        border: 2px solid #00acec;
+        padding: 10px 20px 10px 20px;
+        border-radius: 2px;
+        color: #ffffff;
+        margin: 5px;
+      }
+      .standard-btn:hover {
+        color: #ffffff;
+        background-color: #00acec;
+      }
+      .standard-btn-coloured:hover {
+        color: #ffffff;
+        background-color: #009fdb;
+      }
+
+      .btn-lg {
+        padding: 15px 40px 15px 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Heading -->
+    <header class="title">
+      <div>
+        <a href="/upload-image" class="standard-btn-coloured">Analize New Image</a>
+      </div>
+    </header>
+
+    <!-- Grid -->
+    <section class="container">
+    {% for i in images %}
+      <div>
+        <img
+          src="{{i.image.url}}"
+          alt="First description"
+        />
+        <div class="description">
+            <p style="padding-bottom: 0; color: rebeccapurple;">Sexy: {{i.sexy}}%</p>
+            <p style="padding-bottom: 0; color: rebeccapurple;">Neutral: {{i.neutral}}%</p>
+            <p style="padding-bottom: 0; color: rebeccapurple;">Drawing: {{i.drawing}}%</p>
+            <p style="padding-bottom: 0; color: rebeccapurple;">Porn: {{i.porn}}%</p>
+            <p style="padding-bottom: 0; color: rebeccapurple;">Hentai: {{i.henai}}%</p>
+        </div>
+      </div>
+    {% endfor %}
+    </section>
+  </body>
+</html>
